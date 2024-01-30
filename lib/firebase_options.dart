@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -14,7 +15,10 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
+
 class DefaultFirebaseOptions {
+  final String? apiKeyWeb = dotenv.env['API_KEY_WEB'];
+  
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;
